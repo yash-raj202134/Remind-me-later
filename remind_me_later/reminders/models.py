@@ -4,15 +4,18 @@ from django.db import models
 from django.db import models
 
 class Reminder(models.Model):
+    
     REMINDER_CHOICES = [
-        ('SMS', 'SMS'),
-        ('Email', 'Email'),
-    ]
+    ('WORK', 'Work'),
+    ('MEETING', 'Meeting'),
+    ('BIRTHDAY', 'Birthday'),
+]
+
     
     date = models.DateField()
     time = models.TimeField()
     message = models.TextField()
-    reminder_type = models.CharField(max_length=10, choices=REMINDER_CHOICES)
+    reminder_type = models.CharField(max_length=20, choices=REMINDER_CHOICES)
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
